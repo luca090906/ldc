@@ -2,28 +2,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('theme-toggle');
     const body = document.body;
     
-    // Prüfe gespeicherten Modus oder nutze System-Präferenz
+    // 1. Hole den gespeicherten Modus
     const storedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    // Setze initialen Modus
-    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+    
+    // 2. Setze den Modus: Wenn storedTheme 'dark' ist, aktiviere Dark Mode.
+    //    Andernfalls (auch bei null oder 'light') bleibt es im Light Mode (Standard).
+    if (storedTheme === 'dark') {
         body.classList.add('dark-mode');
-        toggleButton.innerHTML = '<span class="icon">☀️</span>'; // Sonnensymbol
+        // Ändere Icon zu Sonne, da wir jetzt im dunklen Modus sind
+        if (toggleButton) {
+            toggleButton.innerHTML = '<span class="icon">☀️</span>'; 
+        }
     } else {
-        toggleButton.innerHTML = '<span class="icon">🌙</span>'; // Mondsymbol
+        // Starte im Light Mode (Standard)
+        localStorage.setItem('theme', 'light');
+        if (toggleButton) {
+            toggleButton.innerHTML = '<span class="icon">🌙</span>'; 
+        }
     }
 
-    // Event Listener für den Klick
-    toggleButton.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
+    // 3. Event Listener für den Klick (nur wenn Button existiert)
+    if (toggleButton) {
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
 
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-            toggleButton.innerHTML = '<span class="icon">☀️</span>';
-        } else {
-            localStorage.setItem('theme', 'light');
-            toggleButton.innerHTML = '<span class="icon">🌙</span>';
-        }
-    });
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                toggleButton.innerHTML = '<span class="icon">☀️</span>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                toggleButton.innerHTML = '<span class="icon">🌙</span>';
+            }
+        });
+    }
 });
