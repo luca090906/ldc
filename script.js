@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Hole den gespeicherten Modus
     const storedTheme = localStorage.getItem('theme');
     
-    // 2. Setze den Modus: Wenn storedTheme 'dark' ist, aktiviere Dark Mode.
-    //    Andernfalls (auch bei null oder 'light') bleibt es im Light Mode (Standard).
+    // 2. Setze den Modus: Standard ist Light Mode, falls nicht 'dark' gespeichert ist.
     if (storedTheme === 'dark') {
         body.classList.add('dark-mode');
         // Ändere Icon zu Sonne, da wir jetzt im dunklen Modus sind
