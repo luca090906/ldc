@@ -16,6 +16,9 @@
                 <a href="services.html">Leistungen</a>
                 <a href="about.html">Über LDC</a>
                 <a href="contact.html" class="btn btn-nav">Kontakt</a>
+                <button id="theme-toggle" class="btn-toggle">
+                    <span class="icon">🌙</span>
+                </button>
             </nav>
         </div>
     </header>
@@ -45,18 +48,23 @@
                 </div>
                 <div class="contact-form">
                     <h3>Ihre Anfrage</h3>
-                    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                    
+                    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/success"> 
                         <input type="hidden" name="form-name" value="contact" />
+                        
                         <p class="hidden">
                             <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
                         </p>
+                        
                         <input type="text" name="name" placeholder="Ihr Name / Firmenname" required>
                         <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
                         <input type="text" name="subject" placeholder="Betreff (z.B. Website-Anfrage)" required>
                         <textarea name="message" placeholder="Ihr Anliegen (z.B. Automatisierung oder neue Website?)" rows="6" required></textarea>
+                        
                         <button type="submit" class="btn btn-primary">Anfrage senden</button>
                     </form>
-                    <p class="form-note">Für die tatsächliche Funktionsweise des Formulars empfehle ich Ihnen die Nutzung von <a href="https://docs.netlify.com/forms/setup/" target="_blank">Netlify Forms</a>. Fügen Sie einfach das Attribut <code>data-netlify="true"</code> zum <code>&lt;form&gt;</code>-Tag hinzu und benennen Sie die Inputs. Netlify verarbeitet dann die Einsendungen für Sie.</p>
+                    
+                    <p class="form-note">Für die tatsächliche Funktionsweise des Formulars empfehle ich Ihnen die Nutzung von Netlify Forms.</p>
                 </div>
             </div>
         </div>
@@ -67,6 +75,7 @@
             <p>&copy; 2024 Luca Digital Consulting (LDC). | <a href="#" class="footer-link">Impressum</a> | <a href="#" class="footer-link">Datenschutz</a></p>
         </div>
     </footer>
-
+    
+    <script src="script.js" defer></script>
 </body>
 </html>
