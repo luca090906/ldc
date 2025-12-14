@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | LDC Luca Digital Consulting</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">LDC.</a>
+            <nav>
+                <a href="services.html">Leistungen</a>
+                <a href="about.html">Über LDC</a>
+                <a href="contact.html" class="btn btn-nav">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Kontaktieren Sie uns</h1>
+            <p>Wir freuen uns darauf, Sie kennenzulernen und Ihr Unternehmen digital voranzubringen.</p>
+        </div>
+    </section>
+
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Direkter Draht zu LDC</h3>
+                    <p>Haben Sie Fragen, wünschen Sie eine Beratung oder möchten Sie ein unverbindliches Angebot erhalten? Nutzen Sie unser Kontaktformular oder kontaktieren Sie uns direkt.</p>
+                    <ul>
+                        <li><strong>E-Mail:</strong> info@ldc-consulting.de</li>
+                        <li><strong>Telefon:</strong> +49 (0) 123 456789</li>
+                        <li><strong>Adresse:</strong> Musterstraße 1, 12345 Musterstadt</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><img src="https://via.placeholder.com/30x30?text=LI" alt="LinkedIn"></a>
+                        <a href="#" target="_blank"><img src="https://via.placeholder.com/30x30?text=X" alt="X (Twitter)"></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Ihre Anfrage</h3>
+                    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <p class="hidden">
+                            <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                        </p>
+                        <input type="text" name="name" placeholder="Ihr Name / Firmenname" required>
+                        <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+                        <input type="text" name="subject" placeholder="Betreff (z.B. Website-Anfrage)" required>
+                        <textarea name="message" placeholder="Ihr Anliegen (z.B. Automatisierung oder neue Website?)" rows="6" required></textarea>
+                        <button type="submit" class="btn btn-primary">Anfrage senden</button>
+                    </form>
+                    <p class="form-note">Für die tatsächliche Funktionsweise des Formulars empfehle ich Ihnen die Nutzung von <a href="https://docs.netlify.com/forms/setup/" target="_blank">Netlify Forms</a>. Fügen Sie einfach das Attribut <code>data-netlify="true"</code> zum <code>&lt;form&gt;</code>-Tag hinzu und benennen Sie die Inputs. Netlify verarbeitet dann die Einsendungen für Sie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Luca Digital Consulting (LDC). | <a href="#" class="footer-link">Impressum</a> | <a href="#" class="footer-link">Datenschutz</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

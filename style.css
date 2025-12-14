@@ -1,0 +1,396 @@
+/* Globale Einstellungen */
+:root {
+    --primary-color: #0077B6; /* Dunkelblau (Vertrauen) */
+    --accent-color: #00B4D8; /* Türkis (Digitalität, Akzent) */
+    --text-dark: #1E293B; /* Dunkler Text */
+    --text-light: #F8FAFC; /* Heller Text */
+    --bg-light: #FFFFFF;
+    --bg-medium: #F8FAFC;
+    --bg-dark: #023047; /* Dunkler Hintergrund */
+    --shadow-light: rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--bg-light);
+    scroll-behavior: smooth; /* Sanftes Scrollen bei Anker-Links */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* --- Header & Navigation --- */
+.header {
+    background-color: var(--bg-light);
+    border-bottom: 1px solid #E2E8F0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none; /* Link-Stil entfernen */
+}
+
+nav a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 25px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent-color); /* Hover-Effekt: Akzentfarbe */
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px; /* Etwas runder */
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #005A93; 
+    transform: translateY(-3px); /* Animation: Leichter Lift beim Hover */
+    box-shadow: 0 6px 15px rgba(0, 119, 182, 0.4);
+}
+
+.btn-nav {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    margin-left: 20px !important;
+}
+
+.btn-nav:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* --- Hero Section (Startseite) --- */
+.hero {
+    background: linear-gradient(135deg, var(--bg-light), #F0F9FF);
+    padding: 120px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--text-dark);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero p {
+    font-size: 1.35rem;
+    color: #475569;
+    margin-bottom: 50px;
+}
+
+/* --- Page Hero (Unterseiten) --- */
+.page-hero {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.page-hero p {
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- Allgemeine Section Styles --- */
+section {
+    padding: 80px 0;
+}
+
+/* --- Features Section (Startseite) --- */
+.features {
+    background-color: var(--bg-medium);
+    text-align: center;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    background-color: var(--bg-light);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 180, 216, 0.2);
+    border-bottom: 4px solid var(--accent-color);
+}
+
+.feature-card h4 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+/* --- Call to Action (Startseite) --- */
+.call-to-action {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+    padding: 80px 0;
+}
+
+.call-to-action h3 {
+    color: var(--text-light);
+    font-size: 2.5rem;
+}
+
+.call-to-action p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.call-to-action .btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.call-to-action .btn-primary:hover {
+    background-color: #008AA8;
+    border-color: #008AA8;
+    box-shadow: 0 6px 15px rgba(0, 180, 216, 0.4);
+}
+
+/* --- Service Detail Section (Services Seite) --- */
+.service-detail-section {
+    background-color: var(--bg-light);
+    padding: 80px 0;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 80px;
+    flex-wrap: wrap; /* Für Responsivität */
+}
+
+.service-item:last-child {
+    margin-bottom: 0;
+}
+
+.service-item.reverse {
+    flex-direction: row-reverse; /* Bild rechts, Text links */
+}
+
+.service-text, .service-image {
+    flex: 1;
+    min-width: 300px; /* Mindestbreite, bevor es umbricht */
+}
+
+.service-text h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.service-text ul {
+    list-style: none;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-left: 0;
+}
+
+.service-text ul li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.service-text ul li::before {
+    content: '✅'; /* Haken-Symbol */
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.service-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px var(--shadow-light);
+}
+
+
+/* --- About Content (About Seite) --- */
+.about-content {
+    padding: 80px 0;
+}
+
+.about-section {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.about-section h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.value-card {
+    background-color: var(--bg-medium);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px var(--shadow-light);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 180, 216, 0.15);
+}
+
+.value-card h4 {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.team-member {
+    text-align: center;
+    margin-top: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    background-color: var(--bg-medium);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid var(--accent-color);
+}
+
+.team-member h4 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.team-member .title {
+    color: #475569;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+
+/* --- Contact Form Section (Contact Seite) --- */
+.contact-form-section {
+    background-color: var(--bg-medium);
+    padding: 80px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.contact-info {
+    padding: 30px;
+    background-color: var(--bg-light);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+}
+
+.contact-info h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.contact-info p {
+    margin-bottom: 25px;
+}
+
+.contact-info ul {
+    list-style: none;
+    margin-bottom: 30px;
+    padding-left: 0;
