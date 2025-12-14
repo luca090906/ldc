@@ -1,13 +1,30 @@
 /* Globale Einstellungen */
 :root {
+    /* LIGHT MODE Variablen */
     --primary-color: #0077B6; /* Dunkelblau (Vertrauen) */
     --accent-color: #00B4D8; /* Türkis (Digitalität, Akzent) */
-    --text-dark: #1E293B; /* Dunkler Text */
-    --text-light: #F8FAFC; /* Heller Text */
+    --text-dark: #1E293B;
+    --text-light: #F8FAFC;
     --bg-light: #FFFFFF;
     --bg-medium: #F8FAFC;
-    --bg-dark: #023047; /* Dunkler Hintergrund */
+    --bg-dark: #023047;
     --shadow-light: rgba(0, 0, 0, 0.08);
+    --border-color: #E2E8F0;
+    --input-bg: rgba(255, 255, 255, 0.95);
+}
+
+/* DARK MODE Variablen - Wird auf <body> bei Klasse .dark-mode angewendet */
+body.dark-mode {
+    --primary-color: #4DB3FF; /* Helles Blau */
+    --accent-color: #37E2F2; /* Helles Türkis */
+    --text-dark: #E2E8F0; /* Heller Text */
+    --text-light: #1E293B; /* Dunkler Text für Akzente */
+    --bg-light: #1A202C; /* Dunkler Hintergrund */
+    --bg-medium: #2D3748; /* Etwas heller */
+    --bg-dark: #111827; /* Sehr dunkel */
+    --shadow-light: rgba(255, 255, 255, 0.1);
+    --border-color: #4A5568;
+    --input-bg: #4A5568;
 }
 
 * {
@@ -21,7 +38,8 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     background-color: var(--bg-light);
-    scroll-behavior: smooth; /* Sanftes Scrollen bei Anker-Links */
+    scroll-behavior: smooth;
+    transition: background-color 0.4s, color 0.4s; /* Smooth Transition */
 }
 
 .container {
@@ -42,7 +60,7 @@ p {
 /* --- Header & Navigation --- */
 .header {
     background-color: var(--bg-light);
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -59,7 +77,12 @@ p {
     color: var(--primary-color);
     font-size: 1.8rem;
     font-weight: 700;
-    text-decoration: none; /* Link-Stil entfernen */
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav a {
@@ -71,8 +94,34 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--accent-color); /* Hover-Effekt: Akzentfarbe */
+    color: var(--accent-color);
 }
+
+/* Dark Mode Toggle Button Styling */
+.btn-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-dark);
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-toggle:hover {
+    background-color: var(--bg-medium);
+}
+.btn-toggle .icon {
+    display: inline-block;
+    transition: transform 0.5s;
+}
+.dark-mode .btn-toggle .icon {
+    transform: rotate(360deg);
+}
+
 
 /* --- Buttons --- */
 .btn {
@@ -80,7 +129,7 @@ nav a:hover {
     padding: 12px 28px;
     text-decoration: none;
     font-weight: 600;
-    border-radius: 8px; /* Etwas runder */
+    border-radius: 8px;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
     border: none;
     cursor: pointer;
@@ -94,9 +143,9 @@ nav a:hover {
 }
 
 .btn-primary:hover {
-    background-color: #005A93; 
-    transform: translateY(-3px); /* Animation: Leichter Lift beim Hover */
-    box-shadow: 0 6px 15px rgba(0, 119, 182, 0.4);
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px color-mix(in srgb, var(--primary-color) 50%, transparent);
 }
 
 .btn-nav {
@@ -113,7 +162,7 @@ nav a:hover {
 
 /* --- Hero Section (Startseite) --- */
 .hero {
-    background: linear-gradient(135deg, var(--bg-light), #F0F9FF);
+    background: linear-gradient(135deg, var(--bg-light), color-mix(in srgb, var(--bg-light) 90%, var(--primary-color)));
     padding: 120px 0;
     text-align: center;
 }
@@ -130,7 +179,7 @@ nav a:hover {
 
 .hero p {
     font-size: 1.35rem;
-    color: #475569;
+    color: color-mix(in srgb, var(--text-dark) 80%, transparent);
     margin-bottom: 50px;
 }
 
@@ -183,7 +232,7 @@ section {
 
 .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 180, 216, 0.2);
+    box-shadow: 0 10px 25px color-mix(in srgb, var(--accent-color) 40%, transparent);
     border-bottom: 4px solid var(--accent-color);
 }
 
@@ -214,12 +263,13 @@ section {
 .call-to-action .btn-primary {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
+    color: var(--text-dark);
 }
 
 .call-to-action .btn-primary:hover {
-    background-color: #008AA8;
-    border-color: #008AA8;
-    box-shadow: 0 6px 15px rgba(0, 180, 216, 0.4);
+    background-color: color-mix(in srgb, var(--accent-color) 80%, black);
+    border-color: color-mix(in srgb, var(--accent-color) 80%, black);
+    box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color) 50%, transparent);
 }
 
 /* --- Service Detail Section (Services Seite) --- */
@@ -233,7 +283,7 @@ section {
     align-items: center;
     gap: 50px;
     margin-bottom: 80px;
-    flex-wrap: wrap; /* Für Responsivität */
+    flex-wrap: wrap;
 }
 
 .service-item:last-child {
@@ -241,12 +291,12 @@ section {
 }
 
 .service-item.reverse {
-    flex-direction: row-reverse; /* Bild rechts, Text links */
+    flex-direction: row-reverse;
 }
 
 .service-text, .service-image {
     flex: 1;
-    min-width: 300px; /* Mindestbreite, bevor es umbricht */
+    min-width: 300px;
 }
 
 .service-text h2 {
@@ -269,7 +319,7 @@ section {
 }
 
 .service-text ul li::before {
-    content: '✅'; /* Haken-Symbol */
+    content: '✅';
     position: absolute;
     left: 0;
     color: var(--accent-color);
@@ -317,7 +367,7 @@ section {
 
 .value-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 180, 216, 0.15);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color) 30%, transparent);
 }
 
 .value-card h4 {
@@ -353,7 +403,7 @@ section {
 }
 
 .team-member .title {
-    color: #475569;
+    color: color-mix(in srgb, var(--text-dark) 70%, transparent);
     font-weight: 600;
     margin-bottom: 15px;
 }
@@ -394,3 +444,132 @@ section {
     list-style: none;
     margin-bottom: 30px;
     padding-left: 0;
+}
+
+.contact-info ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.social-icons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.social-icons img:hover {
+    transform: translateY(-3px);
+}
+
+.contact-form {
+    padding: 30px;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.contact-form h3 {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* FIX: Styling der Input-Felder, damit sie professioneller aussehen */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--text-dark);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 40%, transparent);
+}
+
+
+/* FIX: Versteckt das Honeypot-Feld und die Netlify-Notiz (wie gewünscht) */
+.hidden,
+.form-note {
+    display: none !important; 
+}
+
+
+/* --- Footer --- */
+.footer {
+    background-color: color-mix(in srgb, var(--bg-dark) 80%, black);
+    color: color-mix(in srgb, var(--text-dark) 50%, transparent);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-link {
+    color: color-mix(in srgb, var(--text-dark) 50%, transparent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: var(--accent-color);
+}
+
+
+/* Media Queries (Responsive Design) */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+    
+    nav a {
+        margin: 0 10px;
+    }
+
+    .btn-toggle {
+        margin-left: 10px;
+    }
+
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .service-item, .service-item.reverse {
+        flex-direction: column;
+    }
+}
